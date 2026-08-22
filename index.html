@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="X Intel"/>
+<meta name="theme-color" content="#0B1F33"/>
+<title>X Intelligence</title>
+<link rel="manifest" href="manifest.json"/>
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0B1F33; --ink:#12263A; --mid:#3D566B; --rule:#D5D0C6;
+  --paper:#F4F1EA; --card:#FFFcf7; --teal:#1A6B6B; --gold:#B0892C;
+  --brick:#8C3A2F; --sage:#4A6B4E;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bot: env(safe-area-inset-bottom, 0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--navy);color:var(--ink);
+  font-family:"Source Sans 3",-apple-system,sans-serif;font-size:16px;line-height:1.45;}
+body{overscroll-behavior:none}
+.app{min-height:100%;background:var(--paper);display:flex;flex-direction:column}
+header.top{
+  position:sticky;top:0;z-index:20;background:var(--navy);color:#EDE8DC;
+  padding:calc(var(--safe-top) + 12px) 18px 12px;
+}
+header.top .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+header.top h1{margin:2px 0 0;font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:20px;color:#fff}
+header.top .issue{font-size:12px;color:#C9B48A;margin-top:2px}
+nav.tabs{
+  position:sticky;top:auto;bottom:0;margin-top:auto;
+  display:flex;background:#fff;border-top:1px solid var(--rule);
+  padding:6px 6px calc(var(--safe-bot) + 8px);
+  z-index:20;
+}
+nav.tabs button{
+  flex:1;border:0;background:transparent;padding:8px 2px 4px;
+  font:600 10px/1.2 "Source Sans 3",sans-serif;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--mid);
+}
+nav.tabs button.on{color:var(--navy)}
+nav.tabs button span{display:block;font-size:16px;margin-bottom:3px}
+main{flex:1;padding:16px 16px 20px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+section{display:none}
+section.on{display:block}
+.deck{color:var(--mid);font-size:15px;margin:0 0 14px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 16px}
+.stat{background:#fff;padding:12px;border-top:3px solid var(--navy)}
+.stat b{display:block;font-family:"Libre Baskerville",Georgia,serif;font-size:22px;color:var(--navy);font-weight:400}
+.stat span{display:block;font-size:11px;color:var(--mid);margin-top:3px}
+h2{font-family:"Libre Baskerville",Georgia,serif;font-weight:400;font-size:22px;color:var(--navy);margin:18px 0 8px}
+h3{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:16px 0 6px;font-weight:700}
+p{margin:0 0 10px}
+a{color:var(--teal)}
+.card{background:#fff;padding:14px 14px 12px;margin:0 0 10px;border-radius:2px;box-shadow:0 1px 0 var(--rule)}
+.card h4{margin:0 0 4px;font-size:16px;color:var(--navy)}
+.num{font-family:"Libre Baskerville",Georgia,serif;color:var(--gold);margin-right:6px}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.tag{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 6px}
+.H{color:var(--sage);background:#E4EDE4}
+.M{color:#6B5420;background:#F3E8C8}
+.L{color:var(--brick);background:#F3E0DC}
+table{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff}
+th{text-align:left;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border-bottom:2px solid var(--navy);padding:8px 5px}
+td{border-bottom:1px solid var(--rule);padding:8px 5px;vertical-align:top}
+blockquote{margin:12px 0;padding:8px 0 8px 12px;border-left:3px solid var(--teal);
+  font-family:"Libre Baskerville",Georgia,serif;font-style:italic;font-size:15px;color:var(--navy)}
+blockquote cite{display:block;font-family:"Source Sans 3",sans-serif;font-style:normal;font-size:12px;color:var(--mid);margin-top:6px}
+.call{background:var(--navy);color:#EDE8DC;padding:14px;margin:12px 0}
+.call h3{color:var(--gold);margin:0 0 6px}
+.call p{margin:0;font-size:14px}
+.src{font-size:12px;color:var(--mid)}
+.install{background:#fff;border:1px solid var(--rule);padding:12px 14px;margin-bottom:14px;font-size:14px}
+.install strong{display:block;color:var(--navy);margin-bottom:4px}
+.row{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:7px 0;border-bottom:1px solid var(--rule)}
+.row:last-child{border:0}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand">X Intelligence</div>
+    <h1>Market brief</h1>
+    <div class="issue">Issue 01 · 22 Aug 2026</div>
+  </header>
+  <main>
+    <section id="brief" class="on">
+      <div class="install" id="installHint">
+        <strong>Put this on your Home Screen</strong>
+        Safari → Share → Add to Home Screen. It opens full-screen like an app.
+      </div>
+      <p class="deck">The emerging object is the always-on agent with a computer, not a new chat model. Money follows operability: who does the work, who governs it, who meters the bill.</p>
+      <div class="stats">
+        <div class="stat"><b>$2.59T</b><span>AI spend 2026 · Gartner 19 May</span></div>
+        <div class="stat"><b>$206.5B</b><span>Purpose-built agents (embedded)</span></div>
+        <div class="stat"><b>23%</b><span>Scaling agents in ≥1 function · McKinsey</span></div>
+        <div class="stat"><b>&gt;40%</b><span>Agentic projects canceled by 2027</span></div>
+      </div>
+      <h3>Thesis</h3>
+      <p>Daily-driver users argue harness plus cost. Claude Code, Cursor, GLM/OpenCode, and narrow computer-use in BPO are the credible stories. Copilot and Agentforce: seats sold, usage thin. Social volume is not adoption.</p>
+      <div class="call"><h3>Do not fund</h3><p>Another general autonomous employee without a system-of-record write-path, eval, and a hard spend cap. Do not blend Gartner’s $206.5B with $7–11B standalone estimates. Annex III high-risk is mostly Dec 2027, not this month.</p></div>
+    </section>
+
+    <section id="board">
+      <h2>Signal board</h2>
+      <p class="src">High / Medium / Low · Opportunity = build, invest, partner, acquire</p>
+      <div class="card"><h4>HappyRobot</h4><p class="src">Ops agents · $150M C · DHL, Uber</p><div class="chips"><span class="tag H">Sig High</span><span class="tag M">Ev Med</span><span class="tag M">Adp Med</span><span class="tag M">Hype Med</span><span class="tag H">Opp High</span></div></div>
+      <div class="card"><h4>TinyFish / Mako</h4><p class="src">Live-web infra · DoorDash 1M+ workflows</p><div class="chips"><span class="tag H">Sig High</span><span class="tag H">Ev High</span><span class="tag M">Adp Med</span><span class="tag H">Hype Low</span><span class="tag H">Opp High</span></div></div>
+      <div class="card"><h4>Zenity</h4><p class="src">Agent security · $125M C</p><div class="chips"><span class="tag H">Sig High</span><span class="tag M">Ev Med</span><span class="tag M">Adp Med</span><span class="tag M">Hype Med</span><span class="tag H">Opp High</span></div></div>
+      <div class="card"><h4>Naïve</h4><p class="src">Agent company OS · $28.5M A · 30k devs (company)</p><div class="chips"><span class="tag H">Sig High</span><span class="tag M">Ev Med</span><span class="tag M">Adp Med</span><span class="tag M">Hype Med</span><span class="tag H">Opp High</span></div></div>
+      <div class="card"><h4>Twin1 AI</h4><p class="src">Professional twins · $20M seed · Linklaters, Orrick</p><div class="chips"><span class="tag H">Sig High</span><span class="tag M">Ev Med</span><span class="tag L">Adp Low</span><span class="tag M">Hype Med</span><span class="tag H">Opp High</span></div></div>
+      <div class="card"><h4>Grok Bot</h4><p class="src">Always-on cloud computer · beta 11 Aug</p><div class="chips"><span class="tag H">Sig High</span><span class="tag M">Ev Med</span><span class="tag L">Adp Low</span><span class="tag L">Hype High</span><span class="tag H">Opp High</span></div></div>
+      <div class="card"><h4>Gemini Spark</h4><p class="src">24/7 VM agent · 160+ countries · usage opaque</p><div class="chips"><span class="tag H">Sig High</span><span class="tag M">Ev Med</span><span class="tag L">Adp Low</span><span class="tag M">Hype Med</span><span class="tag M">Opp Med</span></div></div>
+      <div class="card"><h4>Claude / Cursor / GLM</h4><p class="src">Daily drivers · govern, don’t clone</p><div class="chips"><span class="tag H">Sig High</span><span class="tag H">Ev High</span><span class="tag H">Adp High</span><span class="tag H">Hype Low</span><span class="tag H">Opp High</span></div></div>
+      <div class="card"><h4>Muse Code · xpander · Maestro · CoCounsel · Omniwork</h4><p class="src">Medium/low: real launches, thin adoption. Omniwork is PH-day only.</p></div>
+    </section>
+
+    <section id="names">
+      <h2>What’s emerging</h2>
+      <div class="card"><h4><span class="num">01</span>HappyRobot</h4><p>Enterprise ops, logistics-first. $150M C, ~$1.2B, 4 Aug. Logos DHL, K+N, Uber. 5× growth and 150%+ NDR are company-stated.</p></div>
+      <div class="card"><h4><span class="num">02</span>TinyFish / Mako</h4><p>Mako GA 21 Jul. DoorDash 1M+ quarterly workflows (named exec). Strongest production proof. Google Hotels Japan is first-party, title-only quote.</p></div>
+      <div class="card"><h4><span class="num">03</span>Zenity</h4><p>Intent-aware security across Copilot, ChatGPT, Gemini, Claude, Cursor. $125M C, 230+ staff. Fortune 1000 is an investor claim. Press totals $180 vs $185M.</p></div>
+      <div class="card"><h4><span class="num">04</span>Naïve</h4><p>$28.5M A, 6 Aug. CEO to TC: 30k+ developers, 10× ARR to low double-digit millions, 10 FTEs. KYC/KYB still human.</p></div>
+      <div class="card"><h4><span class="num">05</span>Twin1</h4><p>Out of stealth 20 Aug, $20M seed. Linklaters, Orrick, Dechert, Customers Bank. 30–50% comms automation is company-reported.</p></div>
+      <div class="card"><h4><span class="num">06</span>Grok Bot</h4><p>Beta 11 Aug for SuperGrok Plus/Heavy and Cursor Pro+/Ultra/Teams. Seat counts unconfirmed. Grok 4.6 same week is launch theater until people keep paying.</p></div>
+      <div class="card"><h4><span class="num">07</span>Gemini Spark</h4><p>3.7 Flash in 160+ countries, 13 Aug. Gemini 900M+ MAU is not Spark usage.</p></div>
+    </section>
+
+    <section id="talk">
+      <h2>What users say</h2>
+      <p>Harness plus cost, not which model. Failed runs still bill. Unused credits expire. Dual-source Chinese weights when US models refuse security-adjacent work.</p>
+      <blockquote>“I have a $500 monthly AI budget… I’m going to switch to either Kimi or GLM and use the OpenCode harness.”<cite>takerofnaps · HN Aug 2026</cite></blockquote>
+      <h3>Credible use</h3>
+      <p>Claude Code for long jobs. Cursor as the editor baseline. GLM 5.3 + OpenCode as a spend-switch. Computer-use on portals (a16z: one CPG ~15–20M interactions/month). Not “agent uses my Mac.” Perplexity for cited Q&amp;A. ElevenLabs for hero voice.</p>
+      <h3>Seats ≠ use</h3>
+      <p>M365 Copilot leak: ~30M paid seats, &lt;4.5% of 450M commercial M365, 20–30% weekly use among payers. Agentforce: CIOs still not sold. Kling/Manus complaints are billing, not pixels.</p>
+      <h3>Clusters</h3>
+      <div class="card"><h4>Coding</h4><p>Cursor $20–$200 / Teams $40–$120. Claude Max $100–$200. Copilot credits from 1 Jun. Devin Desktop (Windsurf rebrand).</p></div>
+      <div class="card"><h4>Video / voice / search</h4><p>Sora app ended 26 Apr, API 24 Sep. ElevenLabs $330M 2025 ARR. Perplexity Pro $20 / Max $200. Google keeps the default query stream.</p></div>
+    </section>
+
+    <section id="moves">
+      <h2>Where money sits</h2>
+      <div class="card">
+        <div class="row"><span>1 Control plane</span><b>Build / invest</b></div>
+        <div class="row"><span>2 Inference FinOps</span><b>Build / invest</b></div>
+        <div class="row"><span>3 EU inventory / labels</span><b>Build / partner</b></div>
+        <div class="row"><span>4 Coding spend + BOM</span><b>Build / invest</b></div>
+        <div class="row"><span>5 Execution surface</span><b>Acquire</b></div>
+        <div class="row"><span>6 Two-speed billing</span><b>Build / partner</b></div>
+        <div class="row"><span>7–9 Eval · RAG authz · identity</span><b>Invest / partner</b></div>
+        <div class="row"><span>10 One vertical + metric</span><b>Build</b></div>
+      </div>
+      <h3>Moves up</h3>
+      <p>Named production volumes. Audited HappyRobot NDR. Spark DAU. Grok Bot paid seats. Twin1 second quote. Zenity logos. Cost math that lasts past a model drop.</p>
+      <h3>Moves down</h3>
+      <p>PH week only. Credit-trap reviews. Franchise metrics sold as new SKU. EU scare copy that ignores Dec 2027. SOTA tables without a spend-switch.</p>
+      <p class="src">Next refresh Monday 8:00 AM ET with live X. Transparency/GPAI live 2 Aug 2026.</p>
+    </section>
+  </main>
+  <nav class="tabs" role="tablist">
+    <button class="on" data-tab="brief" type="button"><span>◆</span>Brief</button>
+    <button data-tab="board" type="button"><span>▣</span>Board</button>
+    <button data-tab="names" type="button"><span>≡</span>Names</button>
+    <button data-tab="talk" type="button"><span>❝</span>Talk</button>
+    <button data-tab="moves" type="button"><span>→</span>Moves</button>
+  </nav>
+</div>
+<script>
+const tabs = document.querySelectorAll('nav.tabs button');
+const secs = document.querySelectorAll('main section');
+tabs.forEach(b => b.addEventListener('click', () => {
+  tabs.forEach(x => x.classList.toggle('on', x===b));
+  secs.forEach(s => s.classList.toggle('on', s.id===b.dataset.tab));
+  document.querySelector('main').scrollTop = 0;
+}));
+if (window.navigator.standalone) {
+  const h = document.getElementById('installHint');
+  if (h) h.style.display = 'none';
+}
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch(() => {});
+}
+</script>
+</body>
+</html>
