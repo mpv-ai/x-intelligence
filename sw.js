@@ -1,5 +1,5 @@
 
-const CACHE = 'x-intel-issue-05';
+const CACHE = 'x-intel-issue-06';
 const ASSETS = ['./index.html','./manifest.json','./icons/apple-touch-icon.png','./icons/icon-192.png','./icons/icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
